@@ -1,6 +1,9 @@
 <h1>トップ</h1>
 
 <% @posts.each do |post| %>
+
+  <%= post.user&.name || "NoName" %>
   <%= post.id %>
   <%= post.text %>
+  <%= post.user_id %><br>
 <% end %>

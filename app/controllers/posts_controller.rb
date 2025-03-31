@@ -3,12 +3,12 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def new_form
+  def post_form
     
   end
 
-  def new
-    @new = Post.new(text: params[:text])
+  def post
+    @new = Post.new(text: params[:text], user_id: params[:id])
     @new.save
     redirect_to("/")
   end
