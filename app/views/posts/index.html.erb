@@ -1,9 +1,8 @@
 <h1>トップ</h1>
 
 <% @posts.each do |post| %>
-
-  <%= post.user&.name || "NoName" %>
-  <%= post.id %>
+  <%= image_tag("/user_images/#{post.user.image}", size: "50x50")%>
+  <%= post.user&.name || "NoName" %><br>
   <%= post.text %>
-  <%= post.user_id %><br>
+  <%= button_to "削除","/post_delete/#{post.id}", method: :delete %><br><br>
 <% end %>

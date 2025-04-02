@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def signup
-    @signup = User.new(name: params[:name], email: params[:email], password: params[:password])
+    @signup = User.new(name: params[:name], email: params[:email], password: params[:password], image: "default_image.jpg")
     @signup.save
     redirect_to("/signup_form")
   end
@@ -28,6 +28,33 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
     redirect_to("/login_form")
+  end
+
+  def mypage
+    @mypage = User.find_by(id: params[:id])
+  end
+  def mypage_edit
+    @mypage = User.find_by(id: params[:id])
+  end
+  def mypage_update
+    @user = User.find_by(id: params[:id])
+
+    @user.name = params[:name]
+    @user.email = params[:email]
+    @user.password = params[:password]
+    if params[:image]
+      @user.image = "#{@user.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/user_images/#{@user.image}",image.read)
+    end
+    @user.save
+    redirect_to("/")
+  end
+
+  def delete
+    @delete = User.find_by(id: params[:id])
+    @delete.destroy
+    redirect_to("/")
   end
 
 end
