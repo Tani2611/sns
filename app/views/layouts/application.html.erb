@@ -29,7 +29,7 @@
         <li><%= link_to("新規登録","/signup_form")%></li>
         <% if @current %>
           <li><%= link_to("ログアウト", "/logout")%></li>
-          <li><%= link_to(@current.email,"/")%></li>
+          <li><%= link_to(@current.name,"/mypage/#{@current.id}")%></li>
         <% else %>
           <li><%= link_to("ログイン","/login_form")%></li>
         <% end %>
