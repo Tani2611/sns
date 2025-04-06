@@ -1,0 +1,6 @@
+<h1>フォロー 一覧</h1>
+
+<% @follows.each do |follow| %>
+  <%= image_tag("/user_images/#{follow.follower.image}", class: "image")%>
+  <%= follow.follower.name %><br>
+<% end %>

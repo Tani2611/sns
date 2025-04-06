@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def signup_form
-    @users = User.all
   end
   def signup
     @signup = User.new(name: params[:name], email: params[:email], password: params[:password], image: "default_image.jpg")
@@ -32,7 +31,15 @@ class UsersController < ApplicationController
 
   def mypage
     @mypage = User.find_by(id: params[:id])
+    @follows = Follow.all
+    @follower_count = Follow.where(followed_id: @mypage.id).count
+    @followed_count = Follow.where(follower_id: @mypage.id).count
+    if @current
+      @follow_check = Follow.find_by(follower_id: @mypage.id, followed_id: @current.id)
+    end
+    @user_posts = Post.where(user_id: @mypage.id)
   end
+
   def mypage_edit
     @mypage = User.find_by(id: params[:id])
   end
@@ -56,5 +63,7 @@ class UsersController < ApplicationController
     @delete.destroy
     redirect_to("/")
   end
+
+
 
 end

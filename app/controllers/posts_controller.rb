@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    
+    @users = User.all
+    @follows = Follow.all
   end
 
   def post_form

@@ -1,24 +1,14 @@
 <h1>新規登録</h1>
 
 <%= form_tag("/signup") do %>
-  <div>ユーザー名</div>
+  <div>ユーザー名 (公開)</div>
   <input name="name">
 
-  <div>ID</div>
+  <div>ログインID (非公開)</div>
   <input name="email">
   
-  <div>パスワード<div>
+  <div>パスワード (非公開)<div>
   <input name="password">
   
   <input type="submit" value="新規登録">
-<% end %>
-
-
-<h1>会員一覧</h1>
-<% @users.each do |user|%>
-  <%= image_tag("/user_images/#{user.image}", size: "50x50")%>
-  <%= user.name %>
-  <%= user.email %>
-  <%= user.password %>
-  <%= button_to "削除","/user_delete/#{user.id}", method: :delete %><br>
 <% end %>
