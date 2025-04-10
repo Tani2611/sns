@@ -1,0 +1,11 @@
+<h1><%= params[:search] %> を含む検索一覧</h1>
+
+
+<% @searchs.order(created_at: :desc).each do |search| %>
+  </p><div class="image_box">
+    <%= image_tag("/user_images/#{search.user.image}", class: "image")%>
+    <%= link_to(search.user.name, "/post/edit_form/#{search.id}") %>
+  </div>
+  <%= search.text %><br>
+  <%= search.created_at.strftime('%Y/%m/%d %H時%M分') %></p>
+<% end %>

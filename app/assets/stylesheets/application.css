@@ -2,7 +2,6 @@ body {
   padding: 10px;
   margin: 0;
 }
-
 ul {
   display: flex;
   padding: 0;
@@ -13,19 +12,34 @@ li {
   margin-right: 20px;
 }
 h1 {
-  background: #94faff;
+  margin: 0;
+  padding: 0;
+  background: #a7ecff;
 }
-
+a {
+  /* text-decoration: none; */
+  color: black;
+}
 form {
   display: inline;
 }
-
 .image {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
 }
+
 
 .image_box {
   display: flex;
   align-items: center;
+}
+.image_box > a {
+  font-weight: 700;
+} 
+.title_box {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background: #a7ecff;
+  padding-right: 20px;
 }
