@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
   get "/" => "posts#index"
 
-  get "post_form" => "posts#post_form"
-  post "post" => "posts#post"
+  get "post_new" => "posts#new"
+  post "post_create" => "posts#create"
+  get "post_edit/:id" => "posts#edit"
+  post "post_update/:id" => "posts#update"
+  post "post_search" => "posts#search"
   delete "post_delete/:id" => "posts#delete"
   
-  get "signup_form" => "users#signup_form"
-  post "signup" => "users#signup"
+  get "signup_new" => "users#new"
+  post "signup_create" => "users#create"
   get "login_form" => "users#login_form"
   post "login" => "users#login"
   get "logout" => "users#logout"
-  get "mypage/:id" => "users#mypage"
 
-  get "mypage_edit/:id" => "users#mypage_edit"
-  post "mypage_update/:id" => "users#mypage_update"
+  get "mypage/:id" => "users#mypage"
+  get "mypage_edit/:id" => "users#edit"
+  post "mypage_update/:id" => "users#update"
   delete "user_delete/:id" => "users#delete"
 
 

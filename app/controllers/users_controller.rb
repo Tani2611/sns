@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  def signup_form
+  def new
   end
-  def signup
+  def create
     @signup = User.new(name: params[:name], email: params[:email], password: params[:password], image: "default_image.jpg")
     @signup.save
-    redirect_to("/signup_form")
+    flash[:notice] = "新規登録しました"
+    redirect_to("/mypage/#{@signup.id}")
   end
 
 
@@ -40,12 +41,12 @@ class UsersController < ApplicationController
     @user_posts = Post.where(user_id: @mypage.id)
   end
 
-  def mypage_edit
+  def edit
     @mypage = User.find_by(id: params[:id])
   end
-  def mypage_update
-    @user = User.find_by(id: params[:id])
 
+  def update
+    @user = User.find_by(id: params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
     @user.password = params[:password]
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
       File.binwrite("public/user_images/#{@user.image}",image.read)
     end
     @user.save
-    redirect_to("/")
+    redirect_to("/mypage/#{params[:id]}")
   end
 
   def delete

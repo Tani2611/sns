@@ -1,7 +1,7 @@
 <h1>マイページ</h1>
 <div class="image_box">
   <%= image_tag("/user_images/#{@mypage.image}", class: "image")%>
-  <%= @mypage.name %><br>
+  <%= link_to(@mypage&.name || "NoName", "/mypage/#{@mypage.id}")%><br>
 </div>
 
 <% if @current == nil %>
@@ -27,12 +27,13 @@
 
 
 <h1>投稿一覧</h1>
-<% @user_posts.each do |post| %>
+<% @user_posts.order(created_at: :desc).each do |post| %>
   <div class="image_box">
     <%= image_tag("/user_images/#{post.user.image}", class: "image")%>
     <%= link_to(post.user&.name || "NoName", "/mypage/#{post.user.id}")%><br>
   </div>
   <%= post.text %><br>
+  <%= post.created_at.strftime('%Y/%m/%d %H時%M分') %><br>
 
   <% if @current %>
     <% if @current.id == @mypage.id %>

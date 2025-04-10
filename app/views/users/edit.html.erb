@@ -6,13 +6,13 @@
   <input name="image" type="file">
 
   <div>ユーザー名</div>
-  <input name="name">
+  <input name="name" value="<%=@mypage.name%>">
 
   <div>ID</div>
-  <input name="email">
+  <input name="email" value="<%=@mypage.email%>">
   
   <div>パスワード<div>
-  <input name="password">
+  <input name="password" value="<%=@mypage.password%>">
   
   <input type="submit" value="編集">
 <% end %>

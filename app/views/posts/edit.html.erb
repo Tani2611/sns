@@ -1,0 +1,18 @@
+<h1>投稿ページ編集</h1>
+
+<%# ログインしていない場合　%>
+<% if @current == nil %>
+  <%= @user_post.text %>
+
+<%# ログイン中で、そのユーザーの投稿の場合　%>
+<% elsif @current.id == @user_post.user_id %>
+
+  <%= form_tag("/post_update/#{@user_post.id}") do %>
+    <textarea name="text"><%= @user_post.text %></textarea><br>
+    <input type="submit" value="編集">
+  <% end %>
+  
+<%# ログイン中で、そのユーザーの投稿じゃない場合　%>
+<% else %>
+  <%= @user_post.text %>
+<% end %>

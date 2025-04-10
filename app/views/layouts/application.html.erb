@@ -25,13 +25,13 @@
     <header>
       <ul>
         <li><%= link_to("トップページ", "/")%></li>
-        <li><%= link_to("投稿","/post_form")%></li>
-        <li><%= link_to("新規登録","/signup_form")%></li>
+        <li><%= link_to("投稿","/post_new")%></li>
+        <li><%= link_to("新規登録","/signup_new")%></li>
         <% if @current %>
           <li><%= link_to("ログアウト", "/logout")%></li>
           <li>
             <div class="image_box">
-              <%= link_to(@current.name,"/mypage/#{@current.id}")%>
+              <%= link_to(@current.name,"/mypage/#{@current.id}",)%>
               <%= image_tag("/user_images/#{@current.image}", size: "25x25")%>
             </div>
           </li>
